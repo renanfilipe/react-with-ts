@@ -7,6 +7,10 @@ export default ($user: UserState): Selectors => {
       return [];
     }
 
+    if (filter === "") {
+      return $user.users;
+    }
+
     const lowerCasedFilter = filter.toLowerCase();
 
     return $user.users.filter(
@@ -16,7 +20,24 @@ export default ($user: UserState): Selectors => {
     );
   };
 
+  const getUsersPaginated = (
+    users: User[],
+    perPage: number,
+    pageNumber: number
+  ): User[] => {
+    if (!users || users.length === 0) {
+      return [];
+    }
+    const response = users.slice(
+      perPage * pageNumber,
+      perPage * pageNumber + perPage
+    );
+
+    return response;
+  };
+
   return {
-    filterUsers
+    filterUsers,
+    getUsersPaginated
   };
 };

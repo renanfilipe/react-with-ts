@@ -1,0 +1,41 @@
+#table-container .pagination {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+#table-container .pagination li {
+  user-select: none;
+  color: black;
+  text-decoration: none;
+}
+
+#table-container .pagination li a {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+}
+
+#table-container .pagination li.active a {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+}
+
+#table-container .pagination li:hover:not(.active) a {
+  background-color: #ddd;
+}
+
+#table-container .pagination li.previous.disabled a,
+#table-container .pagination li.next.disabled a {
+  color: gray;
+}
+
+#table-container .pagination li:first-child a {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#table-container .pagination li:last-child a {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

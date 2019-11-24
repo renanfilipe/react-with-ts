@@ -7,10 +7,13 @@
     "@types/node": "12.12.12",
     "@types/react": "16.9.13",
     "@types/react-dom": "16.9.4",
+    "@types/react-paginate": "^6.2.1",
     "@types/request": "^2.48.3",
     "@types/request-promise-native": "^1.0.17",
+    "lodash.debounce": "^4.0.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-paginate": "^6.3.2",
     "react-scripts": "3.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
@@ -39,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.6",
     "tslint": "^5.20.1"
   }
 }

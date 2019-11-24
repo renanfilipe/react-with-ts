@@ -8,6 +8,7 @@ export interface UserContext extends Actions, Selectors {
 export interface UserState {
   users?: User[];
   isLoading: boolean;
+  isFiltering: boolean;
 }
 
 export interface User {
