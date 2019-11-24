@@ -4,4 +4,4 @@ const BaseComponent: FunctionComponent = (): JSX.Element => {
   return <></>;
 };
 
-export default BaseComponent;
+export default React.memo(BaseComponent);

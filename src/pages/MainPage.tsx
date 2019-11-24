@@ -12,4 +12,4 @@ const MainPage: FunctionComponent = (): JSX.Element => (
   </UserProvider>
 );
 
-export default MainPage;
+export default React.memo(MainPage);

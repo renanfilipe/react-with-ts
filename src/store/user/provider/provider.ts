@@ -1,18 +1,6 @@
 // import { to, Api } from "./../../lib";
-import mockData from "../../mockData";
-export interface FetchUsersRequestResponse {
-  data: Array<{
-    name: string;
-    age: number;
-  }>;
-  status: boolean;
-  message: string;
-}
-
-export interface FetchUsersResponse {
-  name: string;
-  age: number;
-}
+import { FetchUsersResponse } from ".";
+import mockData from "../../../mockData";
 
 export const fetchUsers = async (): Promise<FetchUsersResponse[]> => {
   // const [error, response] = await to(

@@ -36,4 +36,4 @@ const TableComponent: FunctionComponent<Props> = ({ users }): JSX.Element => {
   );
 };
 
-export default TableComponent;
+export default React.memo(TableComponent);

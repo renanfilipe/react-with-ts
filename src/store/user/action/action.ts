@@ -1,9 +1,6 @@
-import { UserState } from ".";
-import * as provider from "./provider";
-
-export interface Actions {
-  actionFetchUsers: () => Promise<provider.FetchUsersResponse[]>;
-}
+import { Actions } from ".";
+import { UserState } from "../interfaces";
+import * as provider from "../provider";
 
 export default (
   setUser: React.Dispatch<React.SetStateAction<UserState>>
