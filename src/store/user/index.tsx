@@ -2,18 +2,18 @@
 import { useState } from "react";
 import { useCreateStore } from "../../lib";
 import userActions, { Actions } from "./actions";
-import userSelectors, { Selectors } from "./selectors";
 import initialState from "./initialState";
+import userSelectors, { Selectors } from "./selectors";
 
 export interface UserContext extends Actions, Selectors {
   $user: UserState;
 }
 
 export interface UserState {
-  users?: {
+  users?: Array<{
     name: string;
     age: number;
-  }[];
+  }>;
   isLoading: boolean;
 }
 

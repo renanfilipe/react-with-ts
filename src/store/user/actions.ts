@@ -1,5 +1,5 @@
-import * as provider from "./provider";
 import { UserState } from ".";
+import * as provider from "./provider";
 
 export interface Actions {
   actionFetchUsers: () => Promise<provider.FetchUsersResponse[]>;
@@ -12,8 +12,8 @@ export default (
     const users = await provider.fetchUsers();
     setUser((prev: UserState) => ({
       ...prev,
-      users,
-      isLoading: false
+      isLoading: false,
+      users
     }));
 
     return users;

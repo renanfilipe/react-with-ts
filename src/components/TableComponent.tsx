@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 
 interface Props {
-  users: {
+  users: Array<{
     name: string;
     age: number;
-  }[];
+  }>;
 }
 
 const TableComponent: FunctionComponent<Props> = ({ users }): JSX.Element => {

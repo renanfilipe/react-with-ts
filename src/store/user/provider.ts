@@ -1,10 +1,10 @@
 // import { to, Api } from "./../../lib";
 import mockData from "../../mockData";
 export interface FetchUsersRequestResponse {
-  data: {
+  data: Array<{
     name: string;
     age: number;
-  }[];
+  }>;
   status: boolean;
   message: string;
 }

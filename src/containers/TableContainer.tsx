@@ -1,9 +1,22 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from "react";
+import { InputComponent, TableComponent } from "../components";
 import { useUser } from "../store";
-import { TableComponent } from "../components";
 
 const TableContainer: FunctionComponent = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState("");
   const { $user, actionFetchUsers } = useUser();
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setInputValue(e.target.value);
+    },
+    [setInputValue]
+  );
 
   useEffect(() => {
     if ($user.isLoading) {
@@ -15,7 +28,13 @@ const TableContainer: FunctionComponent = (): JSX.Element => {
       fetch();
     }
   }, [$user, actionFetchUsers]);
-  return <TableComponent users={$user.users || []} />;
+
+  return (
+    <div>
+      <InputComponent value={inputValue} handleChange={handleInputChange} />
+      <TableComponent users={$user.users || []} />
+    </div>
+  );
 };
 
-export default TableContainer;
+export default React.memo(TableContainer);
