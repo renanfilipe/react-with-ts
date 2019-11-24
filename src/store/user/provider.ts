@@ -1,14 +1,28 @@
-import { to, Api } from "./../../lib";
-import { UserState } from ".";
+// import { to, Api } from "./../../lib";
+import mockData from "../../mockData";
+export interface FetchUsersRequestResponse {
+  data: {
+    name: string;
+    age: number;
+  }[];
+  status: boolean;
+  message: string;
+}
 
-export interface FetchUsersResponse extends UserState {}
+export interface FetchUsersResponse {
+  name: string;
+  age: number;
+}
 
-export const fetchUsers = async (): Promise<FetchUsersResponse> => {
-  const [err, res] = await to(Api.get<FetchUsersResponse>("/users"));
-  if (err) {
-    console.log("Error fetching users:", err.message);
-    throw err;
-  }
+export const fetchUsers = async (): Promise<FetchUsersResponse[]> => {
+  // const [error, response] = await to(
+  //   Api.get<FetchUsersRequestResponse>("/users")
+  // );
+  // if (error) {
+  //   console.log("Error fetching users:", error.message);
+  //   throw error;
+  // }
 
-  return res;
+  const response = mockData;
+  return response.data;
 };

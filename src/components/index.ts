@@ -1,1 +1,1 @@
-export { default as DumbComponent } from "./DumbComponent";
+export { default as TableComponent } from "./TableComponent";

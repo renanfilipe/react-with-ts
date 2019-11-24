@@ -6,10 +6,20 @@ export interface UseCreateStoreResponse {
   Provider: React.FunctionComponent<{}>;
 }
 
-export function useCreateStore(useValue: Function) {
-  const Context = React.createContext(undefined);
+const warnNoProvider = () => {
+  console.warn("[useCreateStore] Missing Provider");
+};
+const canUseProxy =
+  process.env.NODE_ENV === "development" && typeof Proxy !== "undefined";
 
-  const Provider: FunctionComponent = (props): JSX.Element => {
+const defaultValue = canUseProxy
+  ? new Proxy({}, { get: warnNoProvider, apply: warnNoProvider })
+  : {};
+
+export function useCreateStore(useValue: Function): UseCreateStoreResponse {
+  const Context = React.createContext(defaultValue);
+
+  const Provider: FunctionComponent = props => {
     const { children } = props;
     const value = useValue(props);
 
@@ -17,9 +27,7 @@ export function useCreateStore(useValue: Function) {
   };
 
   const useContext = () => React.useContext(Context);
-
   useContext.Context = Context;
-
   useContext.Provider = Provider;
 
   return useContext;

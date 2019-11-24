@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { useUser } from "./../store";
+import { useUser } from "../store";
+import { TableComponent } from "../components";
 
-const Table: FunctionComponent = (): JSX.Element => {
+const TableContainer: FunctionComponent = (): JSX.Element => {
   const { $user, actionFetchUsers } = useUser();
 
   useEffect(() => {
-    if (!$user.status) {
+    if ($user.isLoading) {
       console.log("rodou use effect");
       const fetch = async () => {
         await actionFetchUsers();
@@ -14,8 +15,7 @@ const Table: FunctionComponent = (): JSX.Element => {
       fetch();
     }
   }, [$user, actionFetchUsers]);
-
-  return <div>{$user}</div>;
+  return <TableComponent users={$user.users || []} />;
 };
 
-export default Table;
+export default TableContainer;

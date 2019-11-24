@@ -2,17 +2,21 @@ import * as provider from "./provider";
 import { UserState } from ".";
 
 export interface Actions {
-  actionFetchUsers: () => Promise<provider.FetchUsersResponse>;
+  actionFetchUsers: () => Promise<provider.FetchUsersResponse[]>;
 }
 
 export default (
   setUser: React.Dispatch<React.SetStateAction<UserState>>
 ): Actions => {
   const actionFetchUsers = async () => {
-    const data = await provider.fetchUsers();
-    setUser(data);
+    const users = await provider.fetchUsers();
+    setUser((prev: UserState) => ({
+      ...prev,
+      users,
+      isLoading: false
+    }));
 
-    return data;
+    return users;
   };
 
   return {
