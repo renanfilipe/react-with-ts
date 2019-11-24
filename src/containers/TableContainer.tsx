@@ -9,7 +9,7 @@ import { useUser } from "../store";
 
 const TableContainer: FunctionComponent = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
-  const { $user, actionFetchUsers } = useUser();
+  const { $user, actionFetchUsers, filterUsers } = useUser();
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -29,10 +29,12 @@ const TableContainer: FunctionComponent = (): JSX.Element => {
     }
   }, [$user, actionFetchUsers]);
 
+  const users = filterUsers(inputValue);
+
   return (
     <div>
       <InputComponent value={inputValue} handleChange={handleInputChange} />
-      <TableComponent users={$user.users || []} />
+      <TableComponent users={users || []} />
     </div>
   );
 };

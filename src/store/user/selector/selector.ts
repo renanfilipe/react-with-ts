@@ -7,11 +7,13 @@ export default ($user: UserState): Selectors => {
       return [];
     }
 
-    const response = $user.users.filter(({ name, age }) => {
-      return name.includes(filter) || age.toString().includes(filter);
-    });
+    const lowerCasedFilter = filter.toLowerCase();
 
-    return response;
+    return $user.users.filter(
+      ({ name, age }) =>
+        name.toLowerCase().includes(lowerCasedFilter) ||
+        age.toString().includes(filter)
+    );
   };
 
   return {
