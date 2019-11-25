@@ -3,12 +3,12 @@ import React, {
   FunctionComponent,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useState
 } from "react";
-import { Input, Pagination } from "../../components";
+import { Input, Pagination, Table } from "../../components";
 import { useUser } from "../../store";
 import { User } from "../../store/user/interfaces";
-import { Table } from "./TableStyle";
 
 const PER_PAGE = 10;
 
@@ -17,6 +17,7 @@ const TableContainer: FunctionComponent = (): JSX.Element => {
   const [localUsers, setLocalUsers] = useState<User[]>([]);
   const [pagedUsers, setPagedUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { $user, actionFetchUsers, filterUsers, getUsersPaginated } = useUser();
 
   const handleInputChange = useCallback(
@@ -78,7 +79,13 @@ const TableContainer: FunctionComponent = (): JSX.Element => {
     }
   }, [$user, actionFetchUsers, getUsersPaginated, currentPage]);
 
-  if ($user.isLoading || pagedUsers.length === 0) {
+  useLayoutEffect(() => {
+    if (pagedUsers.length > 0 && isLoading) {
+      setIsLoading(false);
+    }
+  }, [pagedUsers.length, isLoading]);
+
+  if (isLoading) {
     return <span>Loading...</span>;
   }
 

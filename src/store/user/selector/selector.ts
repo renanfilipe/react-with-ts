@@ -28,12 +28,8 @@ export default ($user: UserState): Selectors => {
     if (!users || users.length === 0) {
       return [];
     }
-    const response = users.slice(
-      perPage * pageNumber,
-      perPage * pageNumber + perPage
-    );
 
-    return response;
+    return users.slice(perPage * pageNumber, perPage * pageNumber + perPage);
   };
 
   return {

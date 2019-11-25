@@ -16,6 +16,7 @@ const defaultValue = canUseProxy
   ? new Proxy({}, { get: warnNoProvider, apply: warnNoProvider })
   : {};
 
+// tslint:disable-next-line: ban-types
 export function useCreateStore(useValue: Function): UseCreateStoreResponse {
   const Context = React.createContext(defaultValue);
 

@@ -1,8 +1,6 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { MainPage } from "./pages";
 
-const App: React.FC = () => {
-  return <MainPage />;
-};
+const App: FunctionComponent = () => <MainPage />;
 
 export default App;

@@ -13,16 +13,13 @@ const TableComponent: FunctionComponent<Props> = ({ users }): JSX.Element => {
     return null!;
   }
 
-  const renderUsers = (): JSX.Element[] => {
-    return users.map(({ age, name }, index) => {
-      return (
-        <Tr key={`user-${index}`}>
-          <Th>{name}</Th>
-          <Th>{age}</Th>
-        </Tr>
-      );
-    });
-  };
+  const renderUsers = (): JSX.Element[] =>
+    users.map(({ age, name }, index) => (
+      <Tr key={`user-${index}`}>
+        <Th>{name}</Th>
+        <Th>{age}</Th>
+      </Tr>
+    ));
 
   return (
     <Table>

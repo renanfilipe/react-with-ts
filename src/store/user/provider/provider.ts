@@ -10,6 +10,5 @@ export const fetchUsers = async (): Promise<FetchUsersResponse[]> => {
     throw error;
   }
 
-  // const response = mockData;
   return response.data;
 };

@@ -9,13 +9,11 @@ interface Props {
 const InputComponent: FunctionComponent<Props> = ({
   value,
   handleChange
-}): JSX.Element => {
-  return (
-    <Label>
-      Search
-      <Input value={value} onChange={handleChange} />
-    </Label>
-  );
-};
+}): JSX.Element => (
+  <Label>
+    Search
+    <Input value={value} onChange={handleChange} />
+  </Label>
+);
 
 export default React.memo(InputComponent);
