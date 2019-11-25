@@ -5,14 +5,10 @@ import React, {
   useEffect,
   useState
 } from "react";
-import {
-  HeaderComponent,
-  InputComponent,
-  PaginationComponent,
-  TableComponent
-} from "../components";
-import { useUser } from "../store";
-import { User } from "../store/user/interfaces";
+import { Input, Pagination } from "../../components";
+import { useUser } from "../../store";
+import { User } from "../../store/user/interfaces";
+import { Table } from "./TableStyle";
 
 const PER_PAGE = 10;
 
@@ -89,16 +85,15 @@ const TableContainer: FunctionComponent = (): JSX.Element => {
   const pageCount = Math.floor(localUsers.length / PER_PAGE);
 
   return (
-    <div>
-      <HeaderComponent currentPage={currentPage} pageCount={pageCount} />
-      <InputComponent value={inputValue} handleChange={handleInputChange} />
-      <PaginationComponent
+    <>
+      <Input value={inputValue} handleChange={handleInputChange} />
+      <Table users={pagedUsers || []} />
+      <Pagination
         id="table-container"
         pageCount={pageCount}
         handlePagination={handlePagination}
       />
-      <TableComponent users={pagedUsers || []} />
-    </div>
+    </>
   );
 };
 

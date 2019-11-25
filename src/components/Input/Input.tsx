@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Input, Label } from "./InputStyle";
 
 interface Props {
   value: string;
@@ -10,10 +11,10 @@ const InputComponent: FunctionComponent<Props> = ({
   handleChange
 }): JSX.Element => {
   return (
-    <label>
+    <Label>
       Search
-      <input value={value} onChange={handleChange} />
-    </label>
+      <Input value={value} onChange={handleChange} />
+    </Label>
   );
 };
 

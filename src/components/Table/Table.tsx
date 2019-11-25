@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Table, Td, Th, Tr } from "./TableStyle";
 
 interface Props {
   users: Array<{
@@ -15,24 +16,24 @@ const TableComponent: FunctionComponent<Props> = ({ users }): JSX.Element => {
   const renderUsers = (): JSX.Element[] => {
     return users.map(({ age, name }, index) => {
       return (
-        <tr key={`user-${index}`}>
-          <th>{name}</th>
-          <th>{age}</th>
-        </tr>
+        <Tr key={`user-${index}`}>
+          <Th>{name}</Th>
+          <Th>{age}</Th>
+        </Tr>
       );
     });
   };
 
   return (
-    <table>
+    <Table>
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-        </tr>
+        <Tr>
+          <Td>Name</Td>
+          <Td>Age</Td>
+        </Tr>
       </thead>
       <tbody>{renderUsers()}</tbody>
-    </table>
+    </Table>
   );
 };
 

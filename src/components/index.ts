@@ -1,4 +1,3 @@
-export { default as TableComponent } from "./TableComponent";
-export { default as InputComponent } from "./InputComponent";
-export { default as PaginationComponent } from "./PaginationComponent";
-export { default as HeaderComponent } from "./HeaderComponent";
+export { default as Table } from "./Table/Table";
+export { default as Input } from "./Input/Input";
+export { default as Pagination } from "./Pagination/Pagination";

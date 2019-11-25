@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { TableContainer } from "../containers";
+import { Table } from "../containers";
 import { UserProvider } from "../store";
 
 const Main: FunctionComponent = (): JSX.Element => {
-  return <TableContainer />;
+  return <Table />;
 };
 
 const MainPage: FunctionComponent = (): JSX.Element => (

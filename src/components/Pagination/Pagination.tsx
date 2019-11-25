@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import ReactPaginate from "react-paginate";
-import "./PaginationComponent.css";
+import "./Pagination.css";
 
 interface Props {
   pageCount: number;
@@ -21,7 +21,7 @@ const PaginationComponent: FunctionComponent<Props> = ({
         breakLabel={"..."}
         breakClassName={"break-me"}
         pageCount={pageCount}
-        marginPagesDisplayed={2}
+        marginPagesDisplayed={1}
         pageRangeDisplayed={2}
         onPageChange={handlePagination}
         containerClassName={"pagination"}
